@@ -1,0 +1,137 @@
+spring:
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+  jackson:
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    url: jdbc:mysql://cmall-db-mysql:3306/cmall_uac?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+  liquibase:
+    change-log: classpath:liquibase/index.xml
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    url: ${spring.datasource.url}
+
+
+mybatis:
+  type-aliases-package: com.cmall.provider.model.entity
+  mapper-locations: classpath:mapper/*.xml,classpath*:sdk/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰功能。
+
+mapper:
+  mappers: com.cmall.core.mybatis.MyMapper
+  not-empty: false
+  identity: MYSQL
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
+
+security:
+  oauth2:
+    client:
+      clientId: cmall-client-uac
+      clientSecret: cmallClientSecret
+      access-token-uri: http://cmall-gateway:7978/uac/oauth/token
+      user-authorization-uri: http://cmall-gateway:7978/uac/oauth/authorize
+    resource:
+      jwt:
+        key-value: cmall
+      id: cmall-resource-uac
+      filter-order: 3
+#      jwk:
+#        key-set-uri: 'http://127.0.0.1:8000/.well-known/jwks.json'
+
+cmall:
+  enableSqlLogInterceptor: false
+  aliyun:
+    rocketMq:
+      enable: true
+      reliableMessageConsumer: false
+      reliableMessageProducer: true
+      instanceName: paascloud-provider-uac
+      consumerGroup: CID_UAC
+      producerGroup: PID_UAC
+  auth:
+    rest-pwd-url: http://dev-login.cmall.net/resetPwd?resetPwdKey=
+    active-user-url: http://dev-api.cmall.net:7978/uac/auth/activeUser/
+    refresh-token-url: http://dev-api.cmall.net:7978/uac/oauth/token
+  token:
+    interceptor:
+      enable: true
+  oauth2:
+    jwtSigningKey: cmall
+    client:
+      id: ${security.oauth2.resource.id}
+      accessTokenUrl: ${security.oauth2.client.access-token-uri}
+      clientId: ${security.oauth2.client.clientId}
+      clientSecret: ${security.oauth2.client.clientSecret}
+      clientAuthenticationScheme: header
+  security:
+    social:
+      filterProcessesUrl: /auth/callback
+      qq:
+        app-id: 101431061
+        app-secret: 0154c848f45fc705412462d4f99a592c
+        providerId: qq
+      weixin:
+        app-id: wxd99431bbff8305a0
+        app-secret: 60f78681d063590a469f1b297feff3c4
+        providerId: weixin
+    code:
+      image:
+        expireIn: 180
+        url: /auth/register,/auth/submitResetPwdEmail,/auth/code/sms
+      sms:
+        expireIn: 600
+        url: /uac/auth/submitResetPwdPhone
+        mobileMaxSendCount: 1
+        ipMaxSendCount: 2
+        totalMaxSendCount: 3
+    oauth2:
+      tokenStore: jwt
+      clients[0]:
+        clientId: cmall-client-uac
+        clientSecret: cmallClientSecret
+        accessTokenValidateSeconds: 7200
+        scope: "*"
+      clients[1]:
+        clientId: cmall-browser
+        clientSecret: cmallClientSecret
+        accessTokenValidateSeconds: 7200
+        scope: "*"
+      clients[2]:
+        clientId: cmall-client-gateway
+        clientSecret: cmallClientSecret
+        accessTokenValidateSeconds: 7200
+        scope: "*"
+      clients[3]:
+        clientId: cmall-client-zipkin
+        clientSecret: cmallClientSecret
+        accessTokenValidateSeconds: 7200
+        scope: "*"
+      clients[4]:
+        clientId: cmall-client-mdc
+        clientSecret: cmallClientSecret
+        accessTokenValidateSeconds: 7200
+        scope: "*"
+      clients[5]:
+        clientId: cmall-client-omc
+        clientSecret: cmallClientSecret
+        accessTokenValidateSeconds: 7200
+        scope: "*"
+      clients[6]:
+        clientId: cmall-client-opc
+        clientSecret: cmallClientSecret
+        accessTokenValidateSeconds: 7200
+        scope: "*"
+      clients[7]:
+        clientId: cmall-client-tpc
+        clientSecret: cmallClientSecret
+        accessTokenValidateSeconds: 7200
+        scope: "*"

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>cmall-parent</artifactId>
+        <groupId>com.chilangedu</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.chilangedu.common</groupId>
+    <artifactId>cmall-common</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>cmall-common-core</module>
+        <module>cmall-common-base</module>
+        <module>cmall-common-config</module>
+        <module>cmall-common-app</module>
+        <module>cmall-common-util</module>
+        <module>cmall-security-core</module>
+        <module>cmall-security-app</module>
+        <module>cmall-common-zk</module>
+        <module>cmall-security-feign</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+</project>

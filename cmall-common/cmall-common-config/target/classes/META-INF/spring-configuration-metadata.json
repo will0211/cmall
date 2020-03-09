@@ -1,0 +1,52 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.cmall.config.properties.CmallProperties",
+      "name": "cmall",
+      "type": "com.cmall.config.properties.CmallProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.cmall.config.properties.CmallProperties",
+      "name": "cmall.aliyun",
+      "type": "com.cmall.config.properties.AliyunProperties"
+    },
+    {
+      "sourceType": "com.cmall.config.properties.CmallProperties",
+      "name": "cmall.gaode",
+      "type": "com.cmall.config.properties.GaodeProperties"
+    },
+    {
+      "sourceType": "com.cmall.config.properties.CmallProperties",
+      "name": "cmall.job",
+      "type": "com.cmall.config.properties.JobProperties"
+    },
+    {
+      "sourceType": "com.cmall.config.properties.CmallProperties",
+      "name": "cmall.message",
+      "type": "com.cmall.config.properties.ReliableMessageProperties"
+    },
+    {
+      "sourceType": "com.cmall.config.properties.CmallProperties",
+      "name": "cmall.qiniu",
+      "type": "com.cmall.config.properties.QiniuProperties"
+    },
+    {
+      "sourceType": "com.cmall.config.properties.CmallProperties",
+      "name": "cmall.swagger",
+      "type": "com.cmall.config.properties.SwaggerProperties"
+    },
+    {
+      "sourceType": "com.cmall.config.properties.CmallProperties",
+      "name": "cmall.task",
+      "type": "com.cmall.config.properties.AsyncTaskProperties"
+    },
+    {
+      "sourceType": "com.cmall.config.properties.CmallProperties",
+      "name": "cmall.zk",
+      "type": "com.cmall.config.properties.ZookeeperProperties"
+    }
+  ]
+}

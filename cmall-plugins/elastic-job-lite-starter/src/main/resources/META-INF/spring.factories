@@ -1,0 +1,4 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.cmall.elastic.lite.autoconfigure.RegistryCenterConfiguration,\
+  com.cmall.elastic.lite.autoconfigure.ElasticJobAutoConfiguration

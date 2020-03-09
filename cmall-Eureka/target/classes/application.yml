@@ -1,0 +1,27 @@
+server:
+  port: 8765
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: cmall-Eureka
+
+
+eureka:
+  server:
+    enable-self-preservation: false
+  instance:
+    hostname: 127.0.0.1
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+
+#security:
+#  basic:
+#    enabled: true
+#  user:
+#    name: dubby
+#    password: dubby

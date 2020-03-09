@@ -1,0 +1,108 @@
+spring:
+  http:
+      encoding:
+        force: true
+        charset: UTF-8
+        enabled: true
+  servlet:
+    multipart:
+      enabled: true
+      max-request-size: 50MB
+      max-file-size: 50MB
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+  jackson:
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    url: jdbc:mysql://cmall-db-mysql:3306/cmall_opc?useUnicode=true&characterEncoding=UTF-8
+  liquibase:
+    change-log: classpath:liquibase/index.xml
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    url: ${spring.datasource.url}
+
+
+mybatis:
+  type-aliases-package: com.cmall.provider.model.domain
+  mapper-locations: classpath:mapper/*.xml,classpath*:sdk/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+mapper:
+  mappers: com.cmall.core.mybatis.MyMapper
+  not-empty: false
+  identity: MYSQL
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+security:
+  oauth2:
+    client:
+      clientId: cmall-client-opc
+      clientSecret: cmallClientSecret
+      access-token-uri: http://cmall-gateway:7978/uac/oauth/token
+      user-authorization-uri: http://cmall-gateway:7978/uac/oauth/authorize
+    resource:
+      id: cmall-resource-omc
+      user-info-uri: http://cmall-gateway:7978/uac/user
+      prefer-token-info: false
+      jwt:
+        key-uri: http://cmall-service-auth:8001/oauth/token_key
+
+cmall:
+  enableSqlLogInterceptor: true
+  token:
+    interceptor:
+      enable: true
+  zk:
+    zkAddressList: cmall-provider-zk:2181
+  oauth2:
+    jwtSigningKey: cmall
+    client:
+      id: ${security.oauth2.resource.id}
+      accessTokenUrl: ${security.oauth2.client.access-token-uri}
+      clientId: ${security.oauth2.client.clientId}
+      clientSecret: ${security.oauth2.client.clientSecret}
+      clientAuthenticationScheme: header
+      tokenStore: jwt
+  qiniu:
+      key:
+        accessKey: yourQiniuAccessKey
+        secretKey: yourQiniuSecretKey
+      oss:
+        privateHost:
+        publicHost:
+        fileMaxSize: 104857600
+  oauth2:
+      jwtSigningKey: cmall
+      client:
+        id: ${security.oauth2.resource.id}
+        accessTokenUrl: ${security.oauth2.client.access-token-uri}
+        clientId: ${security.oauth2.client.clientId}
+        clientSecret: ${security.oauth2.client.clientSecret}
+        clientAuthenticationScheme: header
+        tokenStore: jwt
+  aliyun:
+      key:
+        accessKeyId: yourAliyunAccessKey
+        accessKeySecret: yourAliyunKeySecret
+      rocketMq:
+        enable: true
+        reliableMessageConsumer: true
+        reliableMessageProducer: false
+        namesrvAddr: cmall-mq-rocket:9876
+        instanceName: cmall-provider-opc
+        consumerGroup: CID_OPC
+        producerGroup: PID_OPC
+      sms:
+        signName: 快乐学习网
+        regionId: cn-beijing
+        endpoint:
+        endpointName: cn-beijing
+        product: Dysmsapi
+        domain: dysmsapi.aliyuncs.com

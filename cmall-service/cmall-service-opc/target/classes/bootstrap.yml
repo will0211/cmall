@@ -1,0 +1,76 @@
+spring:
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+  jackson:
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    url: jdbc:mysql://cmall-db-mysql:3306/cmall_opc?useUnicode=true&characterEncoding=UTF-8
+  liquibase:
+    change-log: classpath:liquibase/index.xml
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    url: ${spring.datasource.url}
+
+
+mybatis:
+  type-aliases-package: com.cmall.provider.model.domain
+  mapper-locations: classpath:mapper/*.xml,classpath*:sdk/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+mapper:
+  mappers: com.cmall.core.mybatis.MyMapper
+  not-empty: false
+  identity: MYSQL
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+security:
+  oauth2:
+    client:
+      clientId: paascloud-client-opc
+      clientSecret: paascloudClientSecret
+      access-token-uri: http://cmall-gateway:7978/uac/oauth/token
+      user-authorization-uri: http://cmall-gateway:7978/uac/oauth/authorize
+    resource:
+      id: cmall-resource-omc
+      user-info-uri: http://cmall-gateway:7978/uac/user
+      prefer-token-info: false
+      jwt:
+        key-uri: http://cmall-service-auth:8001/oauth/token_key
+
+cmall:
+  enableSqlLogInterceptor: true
+  aliyun:
+    rocketMq:
+      enable: false
+      reliableMessageConsumer: false
+      reliableMessageProducer: false
+      instanceName: paascloud-provider-opc
+      consumerGroup: CID_OPC
+      producerGroup: PID_OPC
+  token:
+    interceptor:
+      enable: true
+  zk:
+    zkAddressList: cmall-provider-zk:2181
+  oauth2:
+    jwtSigningKey: cmall
+    client:
+      id: ${security.oauth2.resource.id}
+      accessTokenUrl: ${security.oauth2.client.access-token-uri}
+      clientId: ${security.oauth2.client.clientId}
+      clientSecret: ${security.oauth2.client.clientSecret}
+      clientAuthenticationScheme: header
+      tokenStore: jwt
+  alipay:
+    callback:
+      url: http://api.cmall.net/omc/pay/alipayCallback
+    qrCode:
+      pcPath: /Users/will/Downloads/alipay/QRCode
+      qiniuPath: alipay/QRCode/
