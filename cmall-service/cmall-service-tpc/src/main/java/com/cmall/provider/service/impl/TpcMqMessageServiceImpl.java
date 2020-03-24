@@ -1,39 +1,30 @@
-/*
- * Copyright (c) 2018. paascloud.net All Rights Reserved.
- * 项目名称：paascloud快速搭建企业级分布式微服务平台
- * 类名称：TpcMqMessageServiceImpl.java
- * 创建人：刘兆明
- * 联系方式：paascloud.net@gmail.com
- * 开源地址: https://github.com/paascloud
- * 博客地址: http://blog.paascloud.net
- * 项目官网: http://paascloud.net
- */
+
 
 package com.cmall.provider.service.impl;
 
 import com.github.pagehelper.PageInfo;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
-import com.paascloud.PublicUtil;
-import com.paascloud.base.dto.MessageQueryDto;
-import com.paascloud.base.dto.MqMessageVo;
-import com.paascloud.base.enums.ErrorCodeEnum;
-import com.paascloud.core.generator.UniqueIdGenerator;
-import com.paascloud.core.support.BaseService;
-import com.paascloud.provider.exceptions.TpcBizException;
-import com.paascloud.provider.mapper.TpcMqConfirmMapper;
-import com.paascloud.provider.mapper.TpcMqMessageMapper;
-import com.paascloud.provider.model.domain.TpcMqConfirm;
-import com.paascloud.provider.model.domain.TpcMqMessage;
-import com.paascloud.provider.model.dto.MessageTaskQueryDto;
-import com.paascloud.provider.model.dto.TpcMqMessageDto;
-import com.paascloud.provider.model.enums.MqSendStatusEnum;
-import com.paascloud.provider.model.enums.PIDEnum;
-import com.paascloud.provider.model.vo.TpcMessageVo;
-import com.paascloud.provider.mq.RocketMqProducer;
-import com.paascloud.provider.service.*;
-import com.paascloud.wrapper.WrapMapper;
-import com.paascloud.wrapper.Wrapper;
+import com.cmall.PublicUtil;
+import com.cmall.base.dto.MessageQueryDto;
+import com.cmall.base.dto.MqMessageVo;
+import com.cmall.base.enums.ErrorCodeEnum;
+import com.cmall.core.generator.UniqueIdGenerator;
+import com.cmall.core.support.BaseService;
+import com.cmall.provider.exceptions.TpcBizException;
+import com.cmall.provider.mapper.TpcMqConfirmMapper;
+import com.cmall.provider.mapper.TpcMqMessageMapper;
+import com.cmall.provider.model.domain.TpcMqConfirm;
+import com.cmall.provider.model.domain.TpcMqMessage;
+import com.cmall.provider.model.dto.MessageTaskQueryDto;
+import com.cmall.provider.model.dto.TpcMqMessageDto;
+import com.cmall.provider.model.enums.MqSendStatusEnum;
+import com.cmall.provider.model.enums.PIDEnum;
+import com.cmall.provider.model.vo.TpcMessageVo;
+import com.cmall.provider.mq.RocketMqProducer;
+import com.cmall.provider.service.*;
+import com.cmall.wrapper.WrapMapper;
+import com.cmall.wrapper.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.ModelMapper;
@@ -47,7 +38,6 @@ import java.util.List;
 /**
  * The class Tpc mq message service.
  *
- * @author paascloud.net @gmail.com
  */
 @Service
 @Slf4j
