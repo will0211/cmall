@@ -133,8 +133,8 @@ cmall:
       accessKey: 'your qiniu accessKey'
       secretKey: 'your qiniu secretKey'
     oss:
-      privateHost: 'http://cdn.shevip.cn'
-      publicHost: 'http://cdn.shevip.cn'
+      privateHost: ''
+      publicHost: ''
   alipay:
     callback:
       url: http://dev-api.cmall.net/omc/pay/alipayCallback
