@@ -4,7 +4,6 @@
 ```
 完整的购物流程，spring security oauth2 支持微信、qq第三方登录、分布式事务可靠消息等。
 ```
-#### 架构图
 
 #### SpringBoot2.0+SpringCloud 构建微服务电商商城。
 - 完整的购物流程
@@ -32,8 +31,89 @@
 	日志管理：Logback
 	前端框架：Vue全家桶以及相关组件
 	三方服务： 邮件服务、阿里云短信服务、七牛云文件服务、钉钉机器人服务、高德地图API
-#### 文档
+
+#### 架构图
+![](http://cdn.shevip.cn/blog-a30b33ca04a942bca8332cbd971b83ec)
+
+#### 工程结构
+    ├─cmall----------------------------父项目，公共依赖
+    │  │
+    │  ├─cmall-eureka--------------------------微服务注册中心
+    │  │
+    │  ├─cmall-gateway--------------------------微服务网关中心
+    │  │
+    │  ├─cmall-service
+    │  │  │
+    │  │  ├─cmall-service-mdc------------------数据服务中心
+    │  │  │
+    │  │  ├─cmall-service-omc------------------订单服务中心
+    │  │  │
+    │  │  ├─cmall-service-opc------------------对接服务中心
+    │  │  │
+    │  │  ├─cmall-service-tpc------------------任务服务中心
+    │  │  │
+    │  │  └─cmall-service-auth------------------用户服务中心
+    │  │
+    │  ├─cmall-service-api
+    │  │  │
+    │  │  ├─cmall-service-mdc-api------------------数据服务中心API
+    │  │  │
+    │  │  ├─cmall-service-omc-api------------------订单服务中心API
+    │  │  │
+    │  │  ├─cmall-service-opc-api------------------对接服务中心API
+    │  │  │
+    │  │  ├─cmall-service-tpc-api------------------任务服务中心API
+    │  │  │
+    │  │  ├─cmall-service-sdk-api------------------可靠消息服务API
+    │  │  │
+    │  │  └─cmall-service-auth-api------------------用户服务中心API
+    │  │
+    │  ├─cmall-common
+    │  │  │
+    │  │  ├─cmall-common-base------------------公共POJO基础包
+    │  │  │
+    │  │  ├─cmall-common-config------------------公共配置包
+    │  │  │
+    │  │  ├─cmall-common-core------------------微服务核心依赖包
+    │  │  │
+    │  │  ├─cmall-common-util------------------公共工具包
+    │  │  │
+    │  │  ├─cmall-common-zk------------------zookeeper配置
+    │  │  │
+    │  │  ├─cmall-security-app------------------公共无状态安全认证
+    │  │  │
+    │  │  ├─cmall-security-core------------------安全服务核心包
+    │  │  │
+    │  │  └─cmall-security-feign------------------基于auth2的feign配置
+
+    
+
+
+#### 文档及演示
 
 [文档地址](http://www.chilangedu.com/course/1391679647.html)
+
+
+
+#### 商城系统
+![](http://cdn.shevip.cn/blog-3588b51b61704a24bb8537a324dfdde5)
+
+![](http://cdn.shevip.cn/blog-f908557f0b5f403494851479b5efc3d9)
+
+![](http://cdn.shevip.cn/blog-66c064bb67584fd5b3bef4b881efa1d6)
+
+![](http://cdn.shevip.cn/blog-9f8058f53ee94387ae4c8e3a63ca2a12)
+
+![](http://cdn.shevip.cn/blog-619bd4a62a344f188421d1d417691f31)
+
+![](http://cdn.shevip.cn/blog-635c70e3d81d489284b088d4f47c22d1)
+
+![](http://cdn.shevip.cn/blog-b6462954cd1e46278874d914c9c8c265)
+
+![](http://cdn.shevip.cn/blog-16dec74e3cc442d892d1e9e48c281d33)
+
+![](http://cdn.shevip.cn/blog-57afe66f9377469a9d93e9c744b9c3b2)
+
+![](http://cdn.shevip.cn/blog-877874a4da46465794222907fe399515)
  
 
